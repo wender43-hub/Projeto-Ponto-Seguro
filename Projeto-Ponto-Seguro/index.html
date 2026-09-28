@@ -248,26 +248,40 @@
   <section class="panel" id="prototipo">
     <div class="panel-head">
       <h2>Protótipo do ponto de ônibus seguro</h2>
-      <p>Modelo 3D de referência para os pontos com sistema de segurança integrado — arraste para girar e ver todos os lados.</p>
+      <p>Estrutura em placa única, que sai do chão e se curva para formar a cobertura — arraste o modelo 3D para ver todos os ângulos.</p>
     </div>
     <div class="prototype-wrap">
       <div class="model-3d-wrap">
         <div class="scene" id="scene3d">
           <div class="rig" id="cuboid3d">
-            <div class="face back">
+            <div class="curve seg1">
+              <div class="sos-btn">SOS</div>
+              <div class="curve bend seg2">
+                <div class="bench">
+                  <div class="bench-seat"></div>
+                  <div class="bench-leg l"></div>
+                  <div class="bench-leg r"></div>
+                </div>
+                <div class="curve bend seg3">
+                  <div class="curve bend seg4">
+                    <div class="curve bend seg5">
+                      <div class="cam cam-left"><span class="cam-dot"></span></div>
+                      <div class="cam cam-right"><span class="cam-dot"></span></div>
+                      <div class="led-strip"></div>
+                      <div class="curve bend seg6">
+                        <div class="led-strip"></div>
+                        <div class="alarm-light"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="telao-stand">
               <div class="telao">
                 <div class="telao-topbar"><span class="telao-dot"></span> AO VIVO</div>
                 <div class="telao-msg" id="telaoMsg">Próximo ônibus em 6 min</div>
               </div>
-              <div class="cam cam-left"><span class="cam-dot"></span></div>
-              <div class="cam cam-right"><span class="cam-dot"></span></div>
-            </div>
-            <div class="face left"></div>
-            <div class="face right">
-              <div class="sos-btn">SOS</div>
-            </div>
-            <div class="face top">
-              <div class="alarm-light"></div>
             </div>
           </div>
         </div>
@@ -280,23 +294,27 @@
       <div class="feature-list">
         <div class="feature">
           <div class="num">01</div>
-          <div><h4>Câmeras de vigilância</h4><p>Cobertura dos dois acessos do ponto, conectadas à central de monitoramento em tempo real.</p></div>
+          <div><h4>Estrutura em placa única</h4><p>Uma única placa sai do chão e se curva para formar a cobertura, reduzindo juntas e pontos de fragilidade na estrutura.</p></div>
         </div>
         <div class="feature">
           <div class="num">02</div>
-          <div><h4>Telão informativo</h4><p>Painel digital exibindo horário do próximo ônibus, avisos de segurança e comunicados da comunidade, com conectividade fornecida pela Intertele.</p></div>
+          <div><h4>Banco integrado à estrutura</h4><p>Assento anexado à própria placa, sem peças soltas adicionais, resistente a impacto e vandalismo.</p></div>
         </div>
         <div class="feature">
           <div class="num">03</div>
-          <div><h4>Botão de pânico (SOS)</h4><p>Aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
+          <div><h4>Câmeras acopladas ao teto</h4><p>Câmeras fixadas na parte curva da cobertura, com visão ampla da área de espera, conectadas à central de monitoramento.</p></div>
         </div>
         <div class="feature">
           <div class="num">04</div>
-          <div><h4>Alarme sonoro e luminoso</h4><p>Disparado em caso de tentativa de vandalismo ou acesso indevido à estrutura fora do horário de operação.</p></div>
+          <div><h4>LEDs no teto</h4><p>Iluminação embutida na parte interna da cobertura, melhorando a visibilidade à noite e a qualidade das imagens das câmeras.</p></div>
         </div>
         <div class="feature">
           <div class="num">05</div>
-          <div><h4>Estrutura reforçada</h4><p>Vidros e bancos mais resistentes a impacto e vandalismo, reduzindo a frequência de manutenção.</p></div>
+          <div><h4>Telão vertical ao lado do ponto</h4><p>Painel retangular com a mesma altura do ponto, instalado ao lado da estrutura, exibindo horário do próximo ônibus e avisos de segurança, com conectividade da Intertele.</p></div>
+        </div>
+        <div class="feature">
+          <div class="num">06</div>
+          <div><h4>Botão de pânico (SOS)</h4><p>Acoplado à base da placa, aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
         </div>
       </div>
     </div>
