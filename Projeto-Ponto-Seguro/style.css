@@ -329,25 +329,27 @@ table.db tr:last-child td{ border-bottom:none; }
    Construída como uma cadeia de segmentos retos aninhados: cada segmento
    nasce onde o anterior termina e recebe um pouco mais de inclinação,
    simulando uma curva contínua (CSS não desenha superfícies curvas de
-   verdade, então aproximamos com vários segmentos planos). */
+   verdade, então aproximamos com vários segmentos planos). A base fica
+   presa ao chão (bottom:0) e cada segmento seguinte nasce exatamente no
+   topo do anterior, subindo e se curvando para o mesmo lado do banco. */
 .curve{
-  position:absolute; left:50%; top:118px;
+  position:absolute; left:50%; bottom:0;
   width:104px; height:40px;
   margin-left:-52px;
   transform-style: preserve-3d;
-  transform-origin: 50% 0%;
+  transform-origin: 50% 100%;
   background: linear-gradient(180deg, #1b2748, #0d1730);
   border: 1px solid #2b3a66;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(47,111,237,0.15);
 }
-.curve .curve{ top: 40px; left:50%; margin-left:-52px; }
+.curve .curve{ bottom: 100%; left:50%; margin-left:-52px; }
 .curve.bend{ transform: rotateX(-16deg); }
 
-/* telão vertical ao lado do ponto, mesma altura da estrutura */
+/* telão vertical ao lado do ponto, mesma altura da estrutura, também preso ao chão */
 .telao-stand{
-  position:absolute; left:50%; top:10px;
-  width:64px; height:210px;
+  position:absolute; left:50%; bottom:0;
+  width:64px; height:190px;
   margin-left: 96px;
   transform-style: preserve-3d;
   display:flex; align-items:center; justify-content:center;
