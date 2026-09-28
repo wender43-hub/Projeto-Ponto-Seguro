@@ -248,49 +248,34 @@
   <section class="panel" id="prototipo">
     <div class="panel-head">
       <h2>Protótipo do ponto de ônibus seguro</h2>
-      <p>Modelo de referência para os pontos com sistema de segurança integrado, aplicado a partir da verba destinada à manutenção.</p>
+      <p>Modelo 3D de referência para os pontos com sistema de segurança integrado — arraste para girar e ver todos os lados.</p>
     </div>
     <div class="prototype-wrap">
-      <div class="prototype-frame">
-        <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
-          <!-- ground -->
-          <rect x="0" y="360" width="480" height="60" fill="#0d1730"/>
-          <rect x="0" y="358" width="480" height="4" fill="#2f6fed" opacity="0.5"/>
-          <!-- shelter structure -->
-          <rect x="90" y="150" width="300" height="210" fill="#101833" stroke="#24304f" stroke-width="2"/>
-          <rect x="90" y="140" width="300" height="16" fill="#2f6fed"/>
-          <!-- glass panels -->
-          <rect x="110" y="180" width="80" height="150" fill="#0a1024" stroke="#3a4a75" stroke-width="1.5"/>
-          <rect x="290" y="180" width="80" height="150" fill="#0a1024" stroke="#3a4a75" stroke-width="1.5"/>
-          <!-- bench -->
-          <rect x="205" y="300" width="70" height="10" fill="#3a4a75"/>
-          <rect x="210" y="310" width="8" height="30" fill="#3a4a75"/>
-          <rect x="262" y="310" width="8" height="30" fill="#3a4a75"/>
-          <!-- LED strip -->
-          <rect x="95" y="152" width="290" height="4" fill="#7db0ff"/>
-          <!-- cameras top corners -->
-          <g>
-            <rect x="88" y="130" width="26" height="14" rx="2" fill="#f2b84b"/>
-            <circle cx="90" cy="137" r="4" fill="#0a1024"/>
-          </g>
-          <g>
-            <rect x="366" y="130" width="26" height="14" rx="2" fill="#f2b84b"/>
-            <circle cx="390" cy="137" r="4" fill="#0a1024"/>
-          </g>
-          <!-- alarm light on pole -->
-          <rect x="420" y="120" width="6" height="240" fill="#3a4a75"/>
-          <circle cx="423" cy="112" r="12" fill="#ef5b6b"/>
-          <circle cx="423" cy="112" r="20" fill="#ef5b6b" opacity="0.25"/>
-          <!-- SOS panic button -->
-          <rect x="368" y="230" width="22" height="30" rx="3" fill="#141d3d" stroke="#2f6fed"/>
-          <circle cx="379" cy="242" r="7" fill="#ef5b6b"/>
-          <text x="358" y="272" font-family="Inter" font-size="9" fill="#93a0bf">SOS</text>
-          <!-- labels -->
-          <text x="60" y="112" font-family="Inter" font-size="11" fill="#93a0bf">Câmera</text>
-          <text x="340" y="112" font-family="Inter" font-size="11" fill="#93a0bf">Câmera</text>
-          <text x="436" y="116" font-family="Inter" font-size="11" fill="#93a0bf">Alarme</text>
-          <text x="100" y="170" font-family="Inter" font-size="11" fill="#93a0bf">Iluminação LED</text>
-        </svg>
+      <div class="model-3d-wrap">
+        <div class="scene" id="scene3d">
+          <div class="rig" id="cuboid3d">
+            <div class="face back">
+              <div class="telao">
+                <div class="telao-topbar"><span class="telao-dot"></span> AO VIVO</div>
+                <div class="telao-msg" id="telaoMsg">Próximo ônibus em 6 min</div>
+              </div>
+              <div class="cam cam-left"><span class="cam-dot"></span></div>
+              <div class="cam cam-right"><span class="cam-dot"></span></div>
+            </div>
+            <div class="face left"></div>
+            <div class="face right">
+              <div class="sos-btn">SOS</div>
+            </div>
+            <div class="face top">
+              <div class="alarm-light"></div>
+            </div>
+          </div>
+        </div>
+        <p class="model-hint">Arraste com o mouse ou o dedo para girar o modelo</p>
+        <div class="model-controls">
+          <button type="button" id="resetView">Reiniciar visualização</button>
+          <button type="button" id="toggleSpin">Pausar rotação automática</button>
+        </div>
       </div>
       <div class="feature-list">
         <div class="feature">
@@ -299,15 +284,15 @@
         </div>
         <div class="feature">
           <div class="num">02</div>
-          <div><h4>Botão de pânico (SOS)</h4><p>Aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
+          <div><h4>Telão informativo</h4><p>Painel digital exibindo horário do próximo ônibus, avisos de segurança e comunicados da comunidade, com conectividade fornecida pela Intertele.</p></div>
         </div>
         <div class="feature">
           <div class="num">03</div>
-          <div><h4>Alarme sonoro e luminoso</h4><p>Disparado em caso de tentativa de vandalismo ou acesso indevido à estrutura fora do horário de operação.</p></div>
+          <div><h4>Botão de pânico (SOS)</h4><p>Aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
         </div>
         <div class="feature">
           <div class="num">04</div>
-          <div><h4>Iluminação de LED de alta visibilidade</h4><p>Melhora a percepção de segurança à noite e a qualidade das imagens capturadas pelas câmeras.</p></div>
+          <div><h4>Alarme sonoro e luminoso</h4><p>Disparado em caso de tentativa de vandalismo ou acesso indevido à estrutura fora do horário de operação.</p></div>
         </div>
         <div class="feature">
           <div class="num">05</div>
@@ -325,9 +310,9 @@
     </div>
     <div class="grid cols-3">
       <div class="card partner-card">
-        <div class="badge emtu">EMTU</div>
-        <h3>EMTU</h3>
-        <p>Empresa Metropolitana de Transportes Urbanos, responsável pela gestão do transporte metropolitano e pela articulação dos pontos com as linhas intermunicipais.</p>
+        <div class="badge intertele">IT</div>
+        <h3>Intertele</h3>
+        <p>Provedora da infraestrutura de telecomunicações e conectividade dos pontos, responsável por manter câmeras, alarmes e o telão informativo sempre online e transmitindo em tempo real.</p>
       </div>
       <div class="card partner-card">
         <div class="badge muralha">MP</div>
