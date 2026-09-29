@@ -134,3 +134,16 @@ if (telaoMsg) {
     }, 350);
   }, 3200);
 }
+
+// ===== Telão: relógio ao vivo =====
+const telaoClock = document.getElementById('telaoClock');
+if (telaoClock) {
+  function updateClock() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    telaoClock.textContent = `${hh}:${mm}`;
+  }
+  updateClock();
+  setInterval(updateClock, 15000);
+}

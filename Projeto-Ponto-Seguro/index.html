@@ -254,8 +254,14 @@
       <div class="model-3d-wrap">
         <div class="scene" id="scene3d">
           <div class="rig" id="cuboid3d">
+            <div class="ground-glow"></div>
             <div class="curve seg1">
-              <div class="sos-btn">SOS</div>
+              <div class="info-board">
+                <div class="info-board-title">PONTO DE ÔNIBUS</div>
+                <div class="info-board-map">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
               <div class="curve bend seg2">
                 <div class="bench">
                   <div class="bench-seat"></div>
@@ -263,14 +269,15 @@
                   <div class="bench-leg r"></div>
                 </div>
                 <div class="curve bend seg3">
+                  <div class="led-strip"></div>
                   <div class="curve bend seg4">
+                    <div class="led-strip"></div>
                     <div class="curve bend seg5">
-                      <div class="cam cam-left"><span class="cam-dot"></span></div>
-                      <div class="cam cam-right"><span class="cam-dot"></span></div>
+                      <div class="cam cam-left"><span class="cam-lens"></span></div>
+                      <div class="cam cam-right"><span class="cam-lens"></span></div>
                       <div class="led-strip"></div>
                       <div class="curve bend seg6">
                         <div class="led-strip"></div>
-                        <div class="alarm-light"></div>
                       </div>
                     </div>
                   </div>
@@ -279,9 +286,27 @@
             </div>
             <div class="telao-stand">
               <div class="telao">
-                <div class="telao-topbar"><span class="telao-dot"></span> AO VIVO</div>
-                <div class="telao-msg" id="telaoMsg">Próximo ônibus em 6 min</div>
+                <div class="telao-header">
+                  <div class="telao-crest">PS</div>
+                  <div class="telao-city">PONTO SEGURO<br><strong>ITAPECERICA</strong></div>
+                </div>
+                <div class="telao-buses">
+                  <div class="telao-buses-title">Próximos ônibus</div>
+                  <div class="telao-bus-row"><span>5102-10</span><span>2 min</span></div>
+                  <div class="telao-bus-row"><span>6200-10</span><span>6 min</span></div>
+                  <div class="telao-bus-row"><span>8600-10</span><span>12 min</span></div>
+                </div>
+                <div class="telao-weather"><span id="telaoClock">17:51</span><span>24°C</span></div>
+                <div class="telao-photo"></div>
+                <div class="telao-icons">
+                  <span>Wi-Fi</span><span>USB</span><span>Acessível</span>
+                </div>
+                <div class="telao-ticker">
+                  <span class="telao-dot"></span>
+                  <span class="telao-msg" id="telaoMsg">Próximo ônibus em 6 min</span>
+                </div>
               </div>
+              <div class="sos-box">SOS</div>
             </div>
           </div>
         </div>
@@ -294,7 +319,7 @@
       <div class="feature-list">
         <div class="feature">
           <div class="num">01</div>
-          <div><h4>Estrutura em placa única</h4><p>Uma única placa sai do chão e se curva para formar a cobertura, reduzindo juntas e pontos de fragilidade na estrutura.</p></div>
+          <div><h4>Estrutura em placa única</h4><p>Uma única placa sai do chão e se curva para formar a cobertura, com trilho de LED contínuo acompanhando a curva.</p></div>
         </div>
         <div class="feature">
           <div class="num">02</div>
@@ -302,19 +327,19 @@
         </div>
         <div class="feature">
           <div class="num">03</div>
-          <div><h4>Câmeras acopladas ao teto</h4><p>Câmeras fixadas na parte curva da cobertura, com visão ampla da área de espera, conectadas à central de monitoramento.</p></div>
+          <div><h4>Câmeras em domo no teto</h4><p>Câmeras fixadas na parte curva da cobertura, com visão ampla da área de espera, conectadas à central de monitoramento.</p></div>
         </div>
         <div class="feature">
           <div class="num">04</div>
-          <div><h4>LEDs no teto</h4><p>Iluminação embutida na parte interna da cobertura, melhorando a visibilidade à noite e a qualidade das imagens das câmeras.</p></div>
+          <div><h4>Placa de informações e itinerários</h4><p>Painel fixado na base da estrutura com o nome do ponto e o mapa simplificado das linhas que passam por ali.</p></div>
         </div>
         <div class="feature">
           <div class="num">05</div>
-          <div><h4>Telão vertical ao lado do ponto</h4><p>Painel retangular com a mesma altura do ponto, instalado ao lado da estrutura, exibindo horário do próximo ônibus e avisos de segurança, com conectividade da Intertele.</p></div>
+          <div><h4>Telão vertical ao lado do ponto</h4><p>Painel com a mesma altura do ponto, exibindo próximos ônibus, clima, horário, Wi-Fi e acessibilidade, com conectividade da Intertele.</p></div>
         </div>
         <div class="feature">
           <div class="num">06</div>
-          <div><h4>Botão de pânico (SOS)</h4><p>Acoplado à base da placa, aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
+          <div><h4>Botão de pânico (SOS)</h4><p>Acoplado ao telão, aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
         </div>
       </div>
     </div>

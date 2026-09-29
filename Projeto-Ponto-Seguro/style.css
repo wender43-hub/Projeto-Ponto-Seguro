@@ -325,6 +325,16 @@ table.db tr:last-child td{ border-bottom:none; }
   transition: transform .05s linear;
 }
 
+/* brilho azul no chão, como na referência com piso iluminado */
+.ground-glow{
+  position:absolute; left:50%; bottom:-4px;
+  width:260px; height:14px; margin-left:-130px;
+  background: radial-gradient(ellipse at center, rgba(125,176,255,0.55), transparent 70%);
+  filter: blur(2px);
+  transform: rotateX(90deg);
+  pointer-events:none;
+}
+
 /* ===== Placa única que sai do chão e se curva até virar cobertura =====
    Construída como uma cadeia de segmentos retos aninhados: cada segmento
    nasce onde o anterior termina e recebe um pouco mais de inclinação,
@@ -338,7 +348,7 @@ table.db tr:last-child td{ border-bottom:none; }
   margin-left:-52px;
   transform-style: preserve-3d;
   transform-origin: 50% 100%;
-  background: linear-gradient(180deg, #1b2748, #0d1730);
+  background: linear-gradient(200deg, #17213f 0%, #0a0f22 60%, #060911 100%);
   border: 1px solid #2b3a66;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(47,111,237,0.15);
@@ -346,79 +356,129 @@ table.db tr:last-child td{ border-bottom:none; }
 .curve .curve{ bottom: 100%; left:50%; margin-left:-52px; }
 .curve.bend{ transform: rotateX(-16deg); }
 
+/* placa de informações e mapa, fixada na parte vertical da estrutura */
+.info-board{
+  position:absolute; left:50%; top:6px;
+  width: 84px; height: 100px;
+  margin-left:-42px;
+  transform: translateZ(3px);
+  background: #f4f6fb;
+  border: 3px solid #1c2748;
+  border-radius: 3px;
+  padding: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.info-board-title{
+  font-family:'Barlow Condensed'; font-size: 7px; font-weight:700;
+  color: #0a1024; text-align:center; letter-spacing:0.03em; margin-bottom:5px;
+}
+.info-board-map{
+  height: 76px; border-radius:2px;
+  background:
+    linear-gradient(#d7deef 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, #d7deef 1px, transparent 1px) 0 0/10px 10px,
+    #eef1f9;
+  position:relative;
+}
+.info-board-map span{
+  position:absolute; width:4px; height:4px; border-radius:50%; background: var(--blue);
+}
+.info-board-map span:nth-child(1){ top:20%; left:30%; }
+.info-board-map span:nth-child(2){ top:55%; left:60%; }
+.info-board-map span:nth-child(3){ top:75%; left:25%; }
+
 /* telão vertical ao lado do ponto, mesma altura da estrutura, também preso ao chão */
 .telao-stand{
   position:absolute; left:50%; bottom:0;
-  width:64px; height:190px;
-  margin-left: 96px;
+  width:78px; height:214px;
+  margin-left: 100px;
   transform-style: preserve-3d;
   display:flex; align-items:center; justify-content:center;
   background: linear-gradient(180deg, #0d1730, #060a16);
-  border: 1px solid #24304f;
-  border-radius: 4px;
+  border: 1.5px solid #24304f;
+  border-radius: 5px;
+  box-shadow: 0 0 16px rgba(47,111,237,0.3);
 }
 .telao{
-  width: 52px; height: 180px;
+  width: 66px; height: 198px;
   background: #050914;
-  border: 3px solid #24304f;
+  border: 2px solid #24304f;
   border-radius: 4px;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap: 8px; padding: 8px;
-  box-shadow: 0 0 18px rgba(47,111,237,0.35);
+  display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start;
+  gap: 4px; padding: 5px;
+  box-shadow: 0 0 14px rgba(47,111,237,0.35);
 }
-.telao-topbar{
-  display:flex; align-items:center; gap:5px;
-  font-family:'Inter'; font-size: 7px; letter-spacing: 0.08em;
-  color: var(--alert);
+.telao-header{ display:flex; align-items:center; gap:4px; }
+.telao-crest{
+  width:14px; height:14px; border-radius:3px; flex-shrink:0;
+  background: var(--blue); color:#fff;
+  font-family:'Barlow Condensed'; font-size:7px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.telao-city{
+  font-family:'Inter'; font-size: 4.6px; line-height:1.2; color: var(--muted);
+}
+.telao-city strong{ color:#fff; font-size:5.4px; }
+.telao-buses-title{
+  font-family:'Inter'; font-size: 4.6px; color: var(--muted); margin-bottom:2px;
+}
+.telao-bus-row{
+  display:flex; justify-content:space-between;
+  font-family:'Barlow Condensed'; font-size: 7px; color:#fff; line-height:1.5;
+}
+.telao-weather{
+  display:flex; justify-content:space-between;
+  font-family:'Barlow Condensed'; font-size: 6.5px; color: var(--blue-light);
+  border-top:1px solid #1c2748; border-bottom:1px solid #1c2748; padding:2px 0;
+}
+.telao-photo{
+  height: 34px; border-radius:2px;
+  background: linear-gradient(160deg, #1a2c55, #0a1024 70%);
+}
+.telao-icons{
+  display:flex; justify-content:space-between;
+  font-family:'Inter'; font-size: 3.6px; color: var(--muted); text-align:center;
+}
+.telao-ticker{
+  margin-top:auto; display:flex; align-items:center; gap:3px;
+  border-top:1px solid #1c2748; padding-top:3px;
 }
 .telao-dot{
-  width:5px; height:5px; border-radius:50%; background: var(--alert);
+  width:4px; height:4px; border-radius:50%; background: var(--alert); flex-shrink:0;
   animation: blink 1.4s infinite;
 }
 .telao-msg{
-  font-family:'Barlow Condensed'; font-size: 11px; color: #fff;
-  text-align:center; line-height:1.25;
+  font-family:'Inter'; font-size: 4.4px; color:#fff; line-height:1.2;
   transition: opacity .35s ease;
 }
 @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
 
-/* câmeras acopladas ao teto (últimos segmentos da placa) */
+/* botão de emergência acoplado ao telão, como na referência */
+.sos-box{
+  position:absolute; left:100%; bottom:8px; margin-left:4px;
+  width:20px; height:26px;
+  background:#141d3d; border:1.5px solid var(--alert); border-radius:3px;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--alert); font-family:'Barlow Condensed'; font-size:7px; font-weight:700;
+  box-shadow: 0 0 10px rgba(239,91,107,0.5);
+}
+
+/* câmeras em domo, acopladas ao teto */
 .cam{
-  position:absolute; top:4px; width:18px; height:11px;
-  background:#f2b84b; border-radius:3px;
+  position:absolute; top:4px; width:14px; height:14px; border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, #3a4a75, #0a1024 70%);
+  border: 1px solid #4a5b8a;
 }
-.cam-left{ left:6px; } .cam-right{ right:6px; }
-.cam-dot{
-  position:absolute; left:5px; top:2.5px; width:6px; height:6px; border-radius:50%;
-  background:#0a1024;
-}
-
-/* botão SOS acoplado à base da placa */
-.sos-btn{
-  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
-  width:26px; height:30px; border-radius:4px;
-  background:#141d3d; border:1.5px solid var(--blue);
-  display:flex; align-items:flex-end; justify-content:center; padding-bottom:3px;
-  color: var(--alert); font-family:'Barlow Condensed'; font-size:9px; font-weight:700;
-}
-.sos-btn::before{
-  content:""; position:absolute; top:5px; width:10px; height:10px; border-radius:50%;
-  background: var(--alert); box-shadow: 0 0 8px rgba(239,91,107,0.7);
+.cam-left{ left:8px; } .cam-right{ right:8px; }
+.cam-lens{
+  position:absolute; left:50%; top:50%; width:5px; height:5px; border-radius:50%;
+  background:#0a1024; transform: translate(-50%,-50%);
+  box-shadow: 0 0 3px 1px rgba(125,176,255,0.6);
 }
 
-/* luz de alarme na ponta da cobertura */
-.alarm-light{
-  position:absolute; top:2px; left:50%; transform: translate(-50%,-50%);
-  width:14px; height:14px; border-radius:50%;
-  background: var(--alert);
-  box-shadow: 0 0 14px 6px rgba(239,91,107,0.55);
-  animation: alarm-pulse 1.2s infinite;
-}
-@keyframes alarm-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
-
-/* LEDs no teto (face interna dos segmentos finais da placa) */
+/* trilho de LED contínuo acompanhando a curva da cobertura */
 .led-strip{
-  position:absolute; left:8px; right:8px; bottom:4px; height:4px;
+  position:absolute; left:6px; right:6px; bottom:3px; height:3px;
   background: linear-gradient(90deg, #7db0ff, #fff, #7db0ff);
   border-radius: 3px;
   box-shadow: 0 0 12px 3px rgba(125,176,255,0.7);
@@ -447,6 +507,7 @@ table.db tr:last-child td{ border-bottom:none; }
 }
 .bench-leg.l{ left:14px; }
 .bench-leg.r{ right:14px; }
+
 
 
 .model-hint{ font-size: 0.78rem; color: var(--muted); text-align:center; margin:0; }
