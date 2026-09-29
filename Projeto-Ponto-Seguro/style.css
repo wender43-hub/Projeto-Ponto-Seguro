@@ -355,8 +355,8 @@ table.db tr:last-child td{ border-bottom:none; }
   width:170px; height:110px;
   margin-left:-85px;
   transform-style: preserve-3d;
-  transform-origin: 50% 0%;
-  transform: rotateX(90deg);
+  transform-origin: 50% 100%;
+  transform: rotateX(-90deg);
   background: linear-gradient(200deg, #17213f 0%, #0a0f22 60%, #060911 100%);
   border: 1px solid #2b3a66;
   border-radius: 3px;
@@ -467,21 +467,20 @@ table.db tr:last-child td{ border-bottom:none; }
 
 /* banco embaixo do teto, encostado na placa vertical */
 .bench{
-  position:absolute; left:50%; bottom:44px;
-  width:120px; height:60px;
+  position:absolute; left:50%; bottom:0;
+  width:120px; height:50px;
   margin: 0 0 0 -60px;
   transform-style: preserve-3d;
   transform: translateZ(38px);
 }
 .bench-seat{
-  position:absolute; left:0; top:0; width:120px; height:16px;
+  position:absolute; left:0; bottom:34px; width:120px; height:14px;
   background: linear-gradient(180deg, #4a5b8a, #2a3660);
   border: 1px solid #1c2748;
   border-radius: 2px;
-  transform: rotateX(90deg) translateZ(8px);
 }
 .bench-leg{
-  position:absolute; width:7px; height:34px; top:14px;
+  position:absolute; bottom:0; width:7px; height:34px;
   background: #232f56; border-radius: 1px;
 }
 .bench-leg.l{ left:14px; }
