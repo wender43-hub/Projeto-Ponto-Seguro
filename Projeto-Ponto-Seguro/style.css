@@ -296,118 +296,220 @@ table.db tr:last-child td{ border-bottom:none; }
 .maint-item .cost{ text-align:right; color: var(--muted); font-family:'Barlow Condensed'; font-size:1.05rem; }
 @media (max-width:700px){ .maint-item{ grid-template-columns: 1fr; } .maint-item .cost{ text-align:left; } }
 
-/* ===== Modelo 3D Novo - Idêntico à referência ===== */
-.scene {
-  width: 100%;
-  max-width: 420px;
-  height: 340px;
-  perspective: 1000px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  touch-action: none;
-  cursor: grab;
-  user-select: none;
+/* ===== Protótipo ===== */
+.prototype-wrap{
+  display:grid; grid-template-columns: 1.1fr 1fr; gap: 30px; align-items:start;
 }
-.scene:active { cursor: grabbing; }
+@media (max-width:900px){ .prototype-wrap{ grid-template-columns: 1fr; } }
+.model-3d-wrap{
+  background: radial-gradient(ellipse at 50% 20%, #0d1730, var(--black));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 26px 20px;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+}
 
-.rig {
-  position: relative;
-  width: 320px;
-  height: 220px;
+.scene{
+  width:100%; max-width: 360px; height: 300px;
+  perspective: 950px;
+  display:flex; align-items:center; justify-content:center;
+  touch-action:none; cursor:grab; user-select:none;
+}
+.scene:active{ cursor:grabbing; }
+@media (max-width:480px){ .scene{ transform: scale(0.78); transform-origin: center top; } }
+
+.rig{
+  position:relative; width:280px; height:230px;
+  transform-style:preserve-3d;
+  transform: rotateX(-16deg) rotateY(28deg);
+  transition: transform .05s linear;
+}
+
+/* brilho azul no chão, como na referência com piso iluminado */
+.ground-glow{
+  position:absolute; left:50%; bottom:-4px;
+  width:260px; height:14px; margin-left:-130px;
+  background: radial-gradient(ellipse at center, rgba(125,176,255,0.55), transparent 70%);
+  filter: blur(2px);
+  transform: rotateX(90deg);
+  pointer-events:none;
+}
+
+/* ===== Placa vertical + teto horizontal =====
+   Duas peças simples: uma placa que sobe reta do chão (sustentação) e um
+   teto plano preso acima dela, avançando para a frente para cobrir a
+   área de espera e o banco. */
+.plate{
+  position:absolute; left:50%; bottom:0;
+  width:150px; height:170px;
+  margin-left:-75px;
   transform-style: preserve-3d;
-  transform: rotateX(-14deg) rotateY(24deg);
+  background: linear-gradient(200deg, #17213f 0%, #0a0f22 60%, #060911 100%);
+  border: 1px solid #2b3a66;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(47,111,237,0.15);
 }
 
-/* Base / Piso iluminado */
-.ground-platform {
-  position: absolute;
-  width: 340px;
-  height: 180px;
-  bottom: 0;
-  left: -10px;
-  background: #1e2638;
+.roof{
+  position:absolute; left:50%; bottom:170px;
+  width:170px; height:110px;
+  margin-left:-85px;
+  transform-style: preserve-3d;
+  transform-origin: 50% 0%;
+  transform: rotateX(90deg);
+  background: linear-gradient(200deg, #17213f 0%, #0a0f22 60%, #060911 100%);
+  border: 1px solid #2b3a66;
+  border-radius: 3px;
+  box-shadow: 0 0 14px rgba(47,111,237,0.25);
+}
+
+
+/* telão vertical ao lado do ponto, mesma altura da estrutura, também preso ao chão */
+.telao-stand{
+  position:absolute; left:50%; bottom:0;
+  width:78px; height:214px;
+  margin-left: 100px;
+  transform-style: preserve-3d;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(180deg, #0d1730, #060a16);
+  border: 1.5px solid #24304f;
+  border-radius: 5px;
+  box-shadow: 0 0 16px rgba(47,111,237,0.3);
+}
+.telao{
+  width: 66px; height: 198px;
+  background: #050914;
+  border: 2px solid #24304f;
   border-radius: 4px;
-  transform: rotateX(90deg) translateZ(-90deg);
+  display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start;
+  gap: 4px; padding: 5px;
+  box-shadow: 0 0 14px rgba(47,111,237,0.35);
+}
+.telao-header{ display:flex; align-items:center; gap:4px; }
+.telao-crest{
+  width:14px; height:14px; border-radius:3px; flex-shrink:0;
+  background: var(--blue); color:#fff;
+  font-family:'Barlow Condensed'; font-size:7px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.telao-city{
+  font-family:'Inter'; font-size: 4.6px; line-height:1.2; color: var(--muted);
+}
+.telao-city strong{ color:#fff; font-size:5.4px; }
+.telao-buses-title{
+  font-family:'Inter'; font-size: 4.6px; color: var(--muted); margin-bottom:2px;
+}
+.telao-bus-row{
+  display:flex; justify-content:space-between;
+  font-family:'Barlow Condensed'; font-size: 7px; color:#fff; line-height:1.5;
+}
+.telao-weather{
+  display:flex; justify-content:space-between;
+  font-family:'Barlow Condensed'; font-size: 6.5px; color: var(--blue-light);
+  border-top:1px solid #1c2748; border-bottom:1px solid #1c2748; padding:2px 0;
+}
+.telao-photo{
+  height: 34px; border-radius:2px;
+  background: linear-gradient(160deg, #1a2c55, #0a1024 70%);
+}
+.telao-icons{
+  display:flex; justify-content:space-between;
+  font-family:'Inter'; font-size: 3.6px; color: var(--muted); text-align:center;
+}
+.telao-ticker{
+  margin-top:auto; display:flex; align-items:center; gap:3px;
+  border-top:1px solid #1c2748; padding-top:3px;
+}
+.telao-dot{
+  width:4px; height:4px; border-radius:50%; background: var(--alert); flex-shrink:0;
+  animation: blink 1.4s infinite;
+}
+.telao-msg{
+  font-family:'Inter'; font-size: 4.4px; color:#fff; line-height:1.2;
+  transition: opacity .35s ease;
+}
+@keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+
+/* botão de pânico (SOS) acoplado à placa vertical */
+.sos-btn{
+  position:absolute; top:34px; left:50%; transform: translate(-50%,0);
+  width:28px; height:32px; border-radius:4px;
+  background:#141d3d; border:1.5px solid var(--alert);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--alert); font-family:'Barlow Condensed'; font-size:9px; font-weight:700;
+  box-shadow: 0 0 10px rgba(239,91,107,0.5);
+}
+
+/* câmeras em domo, acopladas ao teto */
+.cam{
+  position:absolute; bottom:16px; width:14px; height:14px; border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, #3a4a75, #0a1024 70%);
+  border: 1px solid #4a5b8a;
+}
+.cam-left{ left:14px; } .cam-right{ right:14px; }
+.cam-lens{
+  position:absolute; left:50%; top:50%; width:5px; height:5px; border-radius:50%;
+  background:#0a1024; transform: translate(-50%,-50%);
+  box-shadow: 0 0 3px 1px rgba(125,176,255,0.6);
+}
+
+/* barras de LED no teto: uma perto da placa, outra na ponta da cobertura */
+.led-strip{
+  position:absolute; left:10px; right:10px; height:4px;
+  background: linear-gradient(90deg, #7db0ff, #fff, #7db0ff);
+  border-radius: 3px;
+  box-shadow: 0 0 12px 3px rgba(125,176,255,0.7);
+  animation: led-glow 2.4s ease-in-out infinite;
+}
+.led-strip.back{ top:6px; }
+.led-strip.front{ bottom:6px; }
+@keyframes led-glow{ 0%,100%{ opacity:0.75; } 50%{ opacity:1; } }
+
+/* banco embaixo do teto, encostado na placa vertical */
+.bench{
+  position:absolute; left:50%; bottom:44px;
+  width:120px; height:60px;
+  margin: 0 0 0 -60px;
   transform-style: preserve-3d;
-  box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
+  transform: translateZ(38px);
 }
-
-.floor-led-border {
-  position: absolute;
-  inset: 0;
-  border: 2px solid #00a2ff;
-  border-radius: 4px;
-  box-shadow: 0 0 10px #00a2ff, inset 0 0 10px #00a2ff;
-}
-
-/* Balizadores azuis no piso */
-.bollard {
-  position: absolute;
-  width: 10px;
-  height: 24px;
-  background: #0f182e;
-  border: 1px solid #0088ff;
-  border-top: 3px solid #7db0ff;
+.bench-seat{
+  position:absolute; left:0; top:0; width:120px; height:16px;
+  background: linear-gradient(180deg, #4a5b8a, #2a3660);
+  border: 1px solid #1c2748;
   border-radius: 2px;
-  box-shadow: 0 0 8px #0088ff;
-  transform: rotateX(-90deg);
+  transform: rotateX(90deg) translateZ(8px);
 }
-.bollard.b1 { left: 30px; top: 130px; }
-.bollard.b2 { left: 60px; top: 130px; }
-
-/* Abrigo Principal */
-.shelter-main {
-  position: absolute;
-  left: 10px;
-  bottom: 20px;
-  width: 220px;
-  height: 170px;
-  transform-style: preserve-3d;
+.bench-leg{
+  position:absolute; width:7px; height:34px; top:14px;
+  background: #232f56; border-radius: 1px;
 }
+.bench-leg.l{ left:14px; }
+.bench-leg.r{ right:14px; }
 
-/* Cobertura curva iluminada */
-.shelter-roof {
-  position: absolute;
-  top: 0;
-  width: 220px;
-  height: 50px;
-  background: #0044aa;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border: 2px solid #0088ff;
-  box-shadow: 0 0 15px rgba(0, 136, 255, 0.5);
-  transform-style: preserve-3d;
+
+
+.model-hint{ font-size: 0.78rem; color: var(--muted); text-align:center; margin:0; }
+.model-controls{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.model-controls button{
+  border:1px solid var(--line); background: var(--navy-panel); color: var(--text);
+  padding: 8px 14px; border-radius: var(--radius-sm); font-size:0.8rem; font-weight:600;
+  cursor:pointer; transition: border-color .15s ease, color .15s ease;
 }
+.model-controls button:hover{ border-color: var(--blue); color: var(--blue-light); }
 
-.roof-led {
-  position: absolute;
-  bottom: 6px;
-  left: 15px;
-  width: 190px;
-  height: 4px;
-  background: #ffffff;
-  box-shadow: 0 0 12px #ffffff, 0 0 20px #00a2ff;
-  border-radius: 2px;
+.feature-list{ display:grid; gap:14px; }
+.feature{
+  display:flex; gap:14px; align-items:flex-start;
+  border: 1px solid var(--line); background: var(--navy-panel);
+  border-radius: var(--radius-sm); padding:14px 16px;
 }
-
-.roof-led-front {
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  width: 190px;
-  height: 3px;
-  background: #ffffff;
-  box-shadow: 0 0 8px #ffffff;
+.feature .num{
+  font-family:'Barlow Condensed'; font-size:1.4rem; color: var(--blue-light);
+  min-width: 26px;
 }
-
-/* Fundo com painel de mapa */
-  .shelter-back {
-  position: absolute;
-  top: 45px;
-  width: 220px;
-  height: 125px;
-  }
+.feature h4{ color:#fff; font-size:1.02rem; margin-bottom:4px; }
+.feature p{ margin:0; color: var(--muted); font-size:0.86rem; }
 
 /* ===== Parceiros ===== */
 .partner-card{
