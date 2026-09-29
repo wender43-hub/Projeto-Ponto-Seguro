@@ -251,98 +251,60 @@
       <p>Estrutura em placa única, que sai do chão e se curva para formar a cobertura — arraste o modelo 3D para ver todos os ângulos.</p>
     </div>
     <div class="prototype-wrap">
-      <div class="model-3d-wrap">
-        <div class="scene" id="scene3d">
-          <div class="rig" id="cuboid3d">
-            <div class="ground-glow"></div>
-            <div class="curve seg1">
-              <div class="info-board">
-                <div class="info-board-title">PONTO DE ÔNIBUS</div>
-                <div class="info-board-map">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="curve bend seg2">
-                <div class="bench">
-                  <div class="bench-seat"></div>
-                  <div class="bench-leg l"></div>
-                  <div class="bench-leg r"></div>
-                </div>
-                <div class="curve bend seg3">
-                  <div class="led-strip"></div>
-                  <div class="curve bend seg4">
-                    <div class="led-strip"></div>
-                    <div class="curve bend seg5">
-                      <div class="cam cam-left"><span class="cam-lens"></span></div>
-                      <div class="cam cam-right"><span class="cam-lens"></span></div>
-                      <div class="led-strip"></div>
-                      <div class="curve bend seg6">
-                        <div class="led-strip"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="telao-stand">
-              <div class="telao">
-                <div class="telao-header">
-                  <div class="telao-crest">PS</div>
-                  <div class="telao-city">PONTO SEGURO<br><strong>ITAPECERICA</strong></div>
-                </div>
-                <div class="telao-buses">
-                  <div class="telao-buses-title">Próximos ônibus</div>
-                  <div class="telao-bus-row"><span>5102-10</span><span>2 min</span></div>
-                  <div class="telao-bus-row"><span>6200-10</span><span>6 min</span></div>
-                  <div class="telao-bus-row"><span>8600-10</span><span>12 min</span></div>
-                </div>
-                <div class="telao-weather"><span id="telaoClock">17:51</span><span>24°C</span></div>
-                <div class="telao-photo"></div>
-                <div class="telao-icons">
-                  <span>Wi-Fi</span><span>USB</span><span>Acessível</span>
-                </div>
-                <div class="telao-ticker">
-                  <span class="telao-dot"></span>
-                  <span class="telao-msg" id="telaoMsg">Próximo ônibus em 6 min</span>
-                </div>
-              </div>
-              <div class="sos-box">SOS</div>
-            </div>
-          </div>
-        </div>
-        <p class="model-hint">Arraste com o mouse ou o dedo para girar o modelo</p>
-        <div class="model-controls">
-          <button type="button" id="resetView">Reiniciar visualização</button>
-          <button type="button" id="toggleSpin">Pausar rotação automática</button>
-        </div>
-      </div>
-      <div class="feature-list">
-        <div class="feature">
-          <div class="num">01</div>
-          <div><h4>Estrutura em placa única</h4><p>Uma única placa sai do chão e se curva para formar a cobertura, com trilho de LED contínuo acompanhando a curva.</p></div>
-        </div>
-        <div class="feature">
-          <div class="num">02</div>
-          <div><h4>Banco integrado à estrutura</h4><p>Assento anexado à própria placa, sem peças soltas adicionais, resistente a impacto e vandalismo.</p></div>
-        </div>
-        <div class="feature">
-          <div class="num">03</div>
-          <div><h4>Câmeras em domo no teto</h4><p>Câmeras fixadas na parte curva da cobertura, com visão ampla da área de espera, conectadas à central de monitoramento.</p></div>
-        </div>
-        <div class="feature">
-          <div class="num">04</div>
-          <div><h4>Placa de informações e itinerários</h4><p>Painel fixado na base da estrutura com o nome do ponto e o mapa simplificado das linhas que passam por ali.</p></div>
-        </div>
-        <div class="feature">
-          <div class="num">05</div>
-          <div><h4>Telão vertical ao lado do ponto</h4><p>Painel com a mesma altura do ponto, exibindo próximos ônibus, clima, horário, Wi-Fi e acessibilidade, com conectividade da Intertele.</p></div>
-        </div>
-        <div class="feature">
-          <div class="num">06</div>
-          <div><h4>Botão de pânico (SOS)</h4><p>Acoplado ao telão, aciona diretamente a central de segurança em caso de emergência, com localização automática do ponto.</p></div>
-        </div>
+      <div class="rig" id="cuboid3d">
+  <!-- Piso com LED perimetral e balizadores azuis -->
+  <div class="ground-platform">
+    <div class="floor-led-border"></div>
+    <div class="bollard b1"></div>
+    <div class="bollard b2"></div>
+  </div>
+
+  <!-- Estrutura principal do abrigo com cobertura curva -->
+  <div class="shelter-main">
+    <div class="shelter-roof">
+      <div class="roof-led"></div>
+      <div class="roof-led-front"></div>
+    </div>
+    <div class="shelter-back">
+      <!-- Painel central de mapa iluminado -->
+      <div class="map-board">
+        <div class="map-header">PONTO DE ÔNIBUS</div>
+        <div class="map-graphic"></div>
       </div>
     </div>
+    <div class="shelter-side-info">
+      <span>INFORMAÇÕES</span>
+    </div>
+    <!-- Banco metálico perfurado -->
+    <div class="shelter-bench">
+      <div class="bench-back"></div>
+      <div class="bench-seat"></div>
+      <div class="bench-base"></div>
+    </div>
+  </div>
+
+  <!-- Totem digital vertical à direita -->
+  <div class="totem-vertical">
+    <div class="totem-border-led"></div>
+    <div class="totem-screen">
+      <div class="totem-header">CIDADE DE SÃO PAULO</div>
+      <div class="totem-buses">
+        <div class="totem-title">Próximos ônibus</div>
+        <div class="totem-row"><span>5102-10</span><span>2 min</span></div>
+        <div class="totem-row"><span>6200-10</span><span>6 min</span></div>
+        <div class="totem-row"><span>8600-10</span><span>12 min</span></div>
+      </div>
+      <div class="totem-meta">
+        <span>24°C</span>
+        <span id="telaoClock">17:51</span>
+      </div>
+      <div class="totem-image"></div>
+      <div class="totem-icons">Wi-Fi · USB · Acessibilidade</div>
+    </div>
+    <!-- Caixinha vermelha SOS / Aligue na base -->
+    <div class="sos-pillar">ALIGUE 156</div>
+  </div>
+</div>
   </section>
 
   <!-- 06 PARCEIROS -->
